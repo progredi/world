@@ -1,0 +1,30 @@
+{
+    "name": "progredi/world",
+    "description": "World plugin for CakePHP",
+    "type": "cakephp-plugin",
+    "keywords": ["cakephp", "world", "countries", "regions", "continents", "currencies"],
+    "homepage": "https://github.com/progredi/world",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Scott",
+            "email": "support@progredi.co.uk",
+            "homepage": "https://www.progredi.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Progredi\\World\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests",
+            "Progredi\\World\\Test\\": "tests"
+        }
+    }
+}
