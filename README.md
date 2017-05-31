@@ -40,6 +40,6 @@ Please review the terms under which you can use their data.
 
 The license information for your plugin, as well as any specific copyright information.
 
-&copy; 2016 Progredi Web Development. All rights reserved.
+&copy; 2017 Progredi Web Development. All rights reserved.
 
 Licensed under the [MIT](http://www.opensource.org/licenses/mit-license.php) License. Redistributions of the source code included in this repository must retain the copyright notice found in each file.
