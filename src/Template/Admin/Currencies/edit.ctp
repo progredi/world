@@ -16,12 +16,12 @@
 
 ?>
 <?= $this->element('navigation/breadcrumbs', [
-	'menuItems' => [
-		[__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
-		[__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
-		[__('Currencies'), __('Currencies Dashboard'), ['action' => 'index']],
-		[null, null, []]
-	]
+    'menuItems' => [
+        [__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
+        [__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
+        [__('Currencies'), __('Currencies Dashboard'), ['action' => 'index']],
+        [null, null, []]
+    ]
 ]); ?>
 
 <h1><?= __('Edit Currency') . ': <strong>' . h($currency->name) . '</strong>'; ?></h1>

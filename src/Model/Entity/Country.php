@@ -27,5 +27,4 @@ class Country extends Entity
     protected $_accessible = [
         '*' => true,
     ];
-
 }

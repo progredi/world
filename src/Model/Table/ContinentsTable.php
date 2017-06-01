@@ -23,68 +23,68 @@ use Progredi\World\Model\Table\AppTable;
  */
 class ContinentsTable extends AppTable
 {
-	/**
-	 * Initialize method
-	 *
-	 * @param array $config Configuration for the Table.
-	 * @return void
-	 */
-	public function initialize(array $config)
-	{
-		parent::initialize($config);
+    /**
+     * Initialize method
+     *
+     * @param array $config Configuration for the Table.
+     * @return void
+     */
+    public function initialize(array $config)
+    {
+        parent::initialize($config);
 
-		$this->setTable('world_continents');
+        $this->setTable('world_continents');
 
-		// Associations
+        // Associations
 
-		$this->hasMany('Countries', [
-			'className' => 'World.Countries',
-			'foreignKey' => 'continent_id',
-			'sort' => ['Countries.name' => 'asc'],
-			'dependent' => false
-		]);
-		$this->hasMany('Regions', [
-			'className'   => 'World.Regions',
-			'foreignKey'  => 'continent_id',
-			'sort' => ['Regions.name' => 'asc'],
-			'dependent'   => false
-		]);
-	}
+        $this->hasMany('Countries', [
+            'className' => 'World.Countries',
+            'foreignKey' => 'continent_id',
+            'sort' => ['Countries.name' => 'asc'],
+            'dependent' => false
+        ]);
+        $this->hasMany('Regions', [
+            'className'   => 'World.Regions',
+            'foreignKey'  => 'continent_id',
+            'sort' => ['Regions.name' => 'asc'],
+            'dependent'   => false
+        ]);
+    }
 
-	/**
-	 * ValidationDefault method
-	 *
-	 * @param object $validator
-	 * @access public
-	 */
-	public function validationDefault(Validator $validator)
-	{
+    /**
+     * ValidationDefault method
+     *
+     * @param object $validator
+     * @access public
+     */
+    public function validationDefault(Validator $validator)
+    {
         $validator
             ->add('name', 'notEmpty', [
                 'rule' => 'notEmpty',
                 'message' => __('Field cannot be left blank'),
             ]);
 
-		return $validator;
-	}
+        return $validator;
+    }
 
-	/**
-	 * Options method
-	 *
-	 * @access public
+    /**
+     * Options method
+     *
+     * @access public
      * @return array Options list for continents select input
-	 */
-	public function options()
-	{
-		$continents = $this;
-		return Cache::remember('world_continents_options', function () use ($continents) {
+     */
+    public function options()
+    {
+        $continents = $this;
+        return Cache::remember('world_continents_options', function () use ($continents) {
 
-			$query = $continents->find('list')
-				->select(['id', 'name'])
-				->where(['enabled' => true])
-				->order(['name' => 'asc']);
+            $query = $continents->find('list')
+                ->select(['id', 'name'])
+                ->where(['enabled' => true])
+                ->order(['name' => 'asc']);
 
-			return $query->toArray();
-		});
+            return $query->toArray();
+        });
     }
 }

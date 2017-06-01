@@ -16,12 +16,12 @@
 
 ?>
 <?= $this->element('navigation/breadcrumbs', [
-	'menuItems' => [
-		[__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
-		[__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
-		[__('Regions'), __('Regions Dashboard'), ['action' => 'index']],
-		[null, null, []]
-	]
+    'menuItems' => [
+        [__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
+        [__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
+        [__('Regions'), __('Regions Dashboard'), ['action' => 'index']],
+        [null, null, []]
+    ]
 ]); ?>
 
 <h1><?= __('Edit Region'); ?>: <strong><?= h($region->name); ?></strong></h1>

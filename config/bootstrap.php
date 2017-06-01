@@ -16,5 +16,5 @@ use Cake\Core\Configure;
 
 // Define header title separator
 if (!defined('TS')) {
-	define('TS', Configure::read('Site.title_separator'));
+    define('TS', Configure::read('Site.title_separator'));
 }

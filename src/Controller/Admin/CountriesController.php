@@ -25,279 +25,279 @@ use Cake\Network\Exception\NotFoundException;
  */
 class CountriesController extends AppController
 {
-	/**
-	 * Index method [Admin]
-	 *
-	 * @return void
-	 */
-	public function index()
-	{
-		// Check if REST API request
+    /**
+     * Index method [Admin]
+     *
+     * @return void
+     */
+    public function index()
+    {
+        // Check if REST API request
 
-		if (is_null($this->request->getParam['_ext'])) {
-			
-			// Configure pagination request.
+        if (is_null($this->request->getParam['_ext'])) {
 
-			$this->paginate['Countries'] = [
-				'conditions' => parent::index(),
-				'limit' => $this->paginate['limit'],
-				'order' => [
-					'Countries.name' => 'asc'
-				],
-				'contain' => [
-					'Regions' => [
-						'Continents'
-					]
-				],
-				'sortWhitelist' => [
-					'Countries.name',
-					'Regions.name',
-					'Continents.name',
-					'Countries.enabled'
-				]
-			];
+            // Configure pagination request.
 
-			// Check for invalid pagination requests.
+            $this->paginate['Countries'] = [
+                'conditions' => parent::index(),
+                'limit' => $this->paginate['limit'],
+                'order' => [
+                    'Countries.name' => 'asc'
+                ],
+                'contain' => [
+                    'Regions' => [
+                        'Continents'
+                    ]
+                ],
+                'sortWhitelist' => [
+                    'Countries.name',
+                    'Regions.name',
+                    'Continents.name',
+                    'Countries.enabled'
+                ]
+            ];
 
-			try {
-				$countries = $this->paginate($this->Countries);
-			}
-			catch (NotFoundException $e) {
+            // Check for invalid pagination requests.
 
-				// Check for out of range page request.
+            try {
+                $countries = $this->paginate($this->Countries);
+            }
+            catch (NotFoundException $e) {
 
-				$this->Flash->error(__("Page request out of range"));
-				return $this->redirect(['action' => 'index']);
-			}
+                // Check for out of range page request.
 
-			$this->set('title_for_layout', __('Countries') . TS . __('World'));
-			$this->set('countries', $countries);
-		}
-		else {
+                $this->Flash->error(__("Page request out of range"));
+                return $this->redirect(['action' => 'index']);
+            }
 
-			$countries = $this->Countries->find('all')
-				->order(['name' => 'asc']);
+            $this->set('title_for_layout', __('Countries') . TS . __('World'));
+            $this->set('countries', $countries);
+        }
+        else {
 
-			$this->set('countries', $countries);
-			$this->set('_serialize', ['countries']);
-		}
-	}
+            $countries = $this->Countries->find('all')
+                ->order(['name' => 'asc']);
 
-	/**
-	 * Add method [Admin]
-	 *
-	 * @return void Redirects on successful add, renders view otherwise.
-	 */
-	public function add()
-	{
-		$country = $this->Countries->newEntity();
+            $this->set('countries', $countries);
+            $this->set('_serialize', ['countries']);
+        }
+    }
 
-		$session = $this->request->session();
+    /**
+     * Add method [Admin]
+     *
+     * @return void Redirects on successful add, renders view otherwise.
+     */
+    public function add()
+    {
+        $country = $this->Countries->newEntity();
 
-		if ($this->request->is('post')) {
-			$country = $this->Countries->patchEntity($country, $this->request->data);
-			if ($this->Countries->save($country)) {
-				$this->Flash->success(__('Country details have been saved'));
-				if (isset($this->request->data['apply'])) {
-					return $this->redirect(['action' => 'edit', $this->Countries->id]);
-				}
-				return $this->redirect($session->read('App.referrer'));
-			}
-			$this->Flash->error(__('Country details could not be saved, please try again'));
-		}
+        $session = $this->request->session();
 
-		if (!$this->request->data) {
-			$session->write('App.referrer', $this->referer());
-		}
+        if ($this->request->is('post')) {
+            $country = $this->Countries->patchEntity($country, $this->request->data);
+            if ($this->Countries->save($country)) {
+                $this->Flash->success(__('Country details have been saved'));
+                if (isset($this->request->data['apply'])) {
+                    return $this->redirect(['action' => 'edit', $this->Countries->id]);
+                }
+                return $this->redirect($session->read('App.referrer'));
+            }
+            $this->Flash->error(__('Country details could not be saved, please try again'));
+        }
 
-		$this->set('title_for_layout', __('Add Country') . TS . __('World'));
+        if (!$this->request->data) {
+            $session->write('App.referrer', $this->referer());
+        }
 
-		$this->set('country', $country);
-		$this->set('regionsOptions', $this->Countries->Regions->options());
-	}
+        $this->set('title_for_layout', __('Add Country') . TS . __('World'));
 
-	/**
-	 * View method [Admin]
-	 *
-	 * @param string|null $id Country id. Can be null for testing purposes.
-	 * @return void Redirects on failed entity retrieval, renders view otherwise.
-	 */
-	public function view($id = null)
-	{
-		// Check for entity request errors.
+        $this->set('country', $country);
+        $this->set('regionsOptions', $this->Countries->Regions->options());
+    }
 
-		try {
-			$country = $this->Countries->get($id, [
-				'contain' => [
-					'Regions' => [
-						'Continents'
-					]
-				]
-			]);
-		}
-		catch (RecordNotFoundException $e) {
+    /**
+     * View method [Admin]
+     *
+     * @param string|null $id Country id. Can be null for testing purposes.
+     * @return void Redirects on failed entity retrieval, renders view otherwise.
+     */
+    public function view($id = null)
+    {
+        // Check for entity request errors.
 
-			// Record primary key not found in table.
+        try {
+            $country = $this->Countries->get($id, [
+                'contain' => [
+                    'Regions' => [
+                        'Continents'
+                    ]
+                ]
+            ]);
+        }
+        catch (RecordNotFoundException $e) {
 
-			$this->Flash->error(__('Country not found'));
-			return $this->redirect(['action' => 'index']);
-		}
-		catch (InvalidPrimaryKeyException $e) {
+            // Record primary key not found in table.
 
-			// Invalid primary key, e.g. NULL.
+            $this->Flash->error(__('Country not found'));
+            return $this->redirect(['action' => 'index']);
+        }
+        catch (InvalidPrimaryKeyException $e) {
 
-			$this->Flash->error(__("Invalid record id specified"));
-			return $this->redirect(['action' => 'index']);
-		}
+            // Invalid primary key, e.g. NULL.
 
-		$this->set('title_for_layout', __('View Country') . TS . __('World'));
+            $this->Flash->error(__("Invalid record id specified"));
+            return $this->redirect(['action' => 'index']);
+        }
 
-		$session = $this->request->session();
-		$session->write('App.referrer', $this->referer());
+        $this->set('title_for_layout', __('View Country') . TS . __('World'));
 
-		$this->set('country', $country);
-		$this->set('_serialize', ['country']);
-	}
+        $session = $this->request->session();
+        $session->write('App.referrer', $this->referer());
 
-	/**
-	 * Edit method [Admin]
-	 *
-	 * @param string|null $id Country id.
-	 * @return void Redirects on successful edit, renders view otherwise.
-	 * @throws \Cake\Network\Exception\NotFoundException When record not found.
-	 */
-	public function edit($id = null)
-	{
-		// Check for entity request errors.
+        $this->set('country', $country);
+        $this->set('_serialize', ['country']);
+    }
 
-		try {
-			$country = $this->Countries->get($id);
-		}
-		catch (RecordNotFoundException $e) {
+    /**
+     * Edit method [Admin]
+     *
+     * @param string|null $id Country id.
+     * @return void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function edit($id = null)
+    {
+        // Check for entity request errors.
 
-			// Record primary key not found in table.
+        try {
+            $country = $this->Countries->get($id);
+        }
+        catch (RecordNotFoundException $e) {
 
-			$this->Flash->error(__('Country not found'));
-			return $this->redirect(['action' => 'index']);
-		}
-		catch (InvalidPrimaryKeyException $e) {
+            // Record primary key not found in table.
 
-			// Invalid primary key, e.g. NULL.
+            $this->Flash->error(__('Country not found'));
+            return $this->redirect(['action' => 'index']);
+        }
+        catch (InvalidPrimaryKeyException $e) {
 
-			$this->Flash->error(__("Invalid record id specified"));
-			return $this->redirect(['action' => 'index']);
-		}
+            // Invalid primary key, e.g. NULL.
 
-		$session = $this->request->session();
+            $this->Flash->error(__("Invalid record id specified"));
+            return $this->redirect(['action' => 'index']);
+        }
 
-		if ($this->request->is(['patch', 'post', 'put'])) {
-			$country = $this->Countries->patchEntity($country, $this->request->data);
-			if ($this->Countries->save($country)) {
-				$this->Flash->success(__('Country details have been updated'));
-				if (!isset($this->request->data['apply'])) {
-					return $this->redirect($session->read('App.referrer'));
-				}
-			} else {
-				$this->Flash->error(__('Country details could not be updated, please try again'));
-			}
-		}
+        $session = $this->request->session();
 
-		if (!$this->request->data) {
-			$this->request->data = $country;
-			$session->write('App.referrer', $this->referer());
-		}
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $country = $this->Countries->patchEntity($country, $this->request->data);
+            if ($this->Countries->save($country)) {
+                $this->Flash->success(__('Country details have been updated'));
+                if (!isset($this->request->data['apply'])) {
+                    return $this->redirect($session->read('App.referrer'));
+                }
+            } else {
+                $this->Flash->error(__('Country details could not be updated, please try again'));
+            }
+        }
 
-		$this->set('title_for_layout', __('Edit Country') . TS . __('World'));
+        if (!$this->request->data) {
+            $this->request->data = $country;
+            $session->write('App.referrer', $this->referer());
+        }
 
-		$this->set('country', $country);
-		$this->set('_serialize', ['country']);
+        $this->set('title_for_layout', __('Edit Country') . TS . __('World'));
 
-		$this->set('regionsOptions', $this->Countries->Regions->options());
-	}
+        $this->set('country', $country);
+        $this->set('_serialize', ['country']);
 
-	/**
-	 * Delete method [Admin]
-	 *
-	 * @param int|null $id Country id.
-	 * @return void Redirects to referrer or index method
-	 */
-	public function delete($id = null)
-	{
-		$this->request->allowMethod(['post', 'delete']);
+        $this->set('regionsOptions', $this->Countries->Regions->options());
+    }
 
-		// Check for entity request errors.
+    /**
+     * Delete method [Admin]
+     *
+     * @param int|null $id Country id.
+     * @return void Redirects to referrer or index method
+     */
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
 
-		try {
-			$country = $this->Countries->get($id);
-		}
-		catch (RecordNotFoundException $e) {
+        // Check for entity request errors.
 
-			// Record primary key not found in table.
+        try {
+            $country = $this->Countries->get($id);
+        }
+        catch (RecordNotFoundException $e) {
 
-			$this->Flash->error(__('Country not found'));
-			return $this->redirect(env('HTTP_REFERER'));
-		}
-		catch (InvalidPrimaryKeyException $e) {
+            // Record primary key not found in table.
 
-			// Invalid primary key, e.g. NULL.
+            $this->Flash->error(__('Country not found'));
+            return $this->redirect(env('HTTP_REFERER'));
+        }
+        catch (InvalidPrimaryKeyException $e) {
 
-			$this->Flash->error(__("Invalid record id specified"));
-			return $this->redirect(env('HTTP_REFERER'));
-		}
+            // Invalid primary key, e.g. NULL.
 
-		if ($this->Countries->delete($country)) {
-			$this->Flash->success(__('Country has been deleted'));
-		} else {
-			$this->Flash->error(__('Country could not be deleted, please try again'));
-		}
+            $this->Flash->error(__("Invalid record id specified"));
+            return $this->redirect(env('HTTP_REFERER'));
+        }
 
-		return $this->redirect(preg_match('/view|edit/', env('HTTP_REFERER'))
-			? ['action' => 'index']
-			: env('HTTP_REFERER')
-		);
-	}
+        if ($this->Countries->delete($country)) {
+            $this->Flash->success(__('Country has been deleted'));
+        } else {
+            $this->Flash->error(__('Country could not be deleted, please try again'));
+        }
 
-	/**
-	 * Import method [Admin]
-	 *
-	 * @return void
-	 */
-	public function import()
-	{
-		$file = new File(TMP . 'countries.json');
-		$contents = json_decode($file->read(), true);
-		$file->close();
+        return $this->redirect(preg_match('/view|edit/', env('HTTP_REFERER'))
+            ? ['action' => 'index']
+            : env('HTTP_REFERER')
+        );
+    }
 
-		$countries = ['missing' => [], 'present' => []];
-		foreach ($contents as $entry) {
+    /**
+     * Import method [Admin]
+     *
+     * @return void
+     */
+    public function import()
+    {
+        $file = new File(TMP . 'countries.json');
+        $contents = json_decode($file->read(), true);
+        $file->close();
 
-			$query = $this->Countries->find('all', [
-    			'conditions' => ['alpha_3_code' => $entry['cca3']]
-			]);
-			$country = $query->first();
+        $countries = ['missing' => [], 'present' => []];
+        foreach ($contents as $entry) {
 
-			if (empty($country)) {
-				$countries['missing'][] = $entry;
-				continue;
-			}
+            $query = $this->Countries->find('all', [
+                'conditions' => ['alpha_3_code' => $entry['cca3']]
+            ]);
+            $country = $query->first();
 
-			$data = [
-				'official_name' => $entry['name']['official'] ? $entry['name']['official'] : null,
-				'demonym' => $entry['demonym'] ? $entry['demonym'] : null,
-				'alpha2_code' => $entry['cca2'] ? $entry['cca2'] : null,
-				'numeric_code' => $entry['ccn3'] ? $entry['ccn3'] : null,
-				'calling_code' => !empty($entry['callingCode']) ? implode(', ', $entry['callingCode']) : null,
-				'latitude' => !empty($entry['latlng']) ? $entry['latlng'][0] : null,
-				'longitude' => !empty($entry['latlng']) ? $entry['latlng'][1] : null
-			];
+            if (empty($country)) {
+                $countries['missing'][] = $entry;
+                continue;
+            }
 
-			$country = $this->Countries->patchEntity($country, $data);
-			$this->Countries->save($country);
-		}
+            $data = [
+                'official_name' => $entry['name']['official'] ? $entry['name']['official'] : null,
+                'demonym' => $entry['demonym'] ? $entry['demonym'] : null,
+                'alpha2_code' => $entry['cca2'] ? $entry['cca2'] : null,
+                'numeric_code' => $entry['ccn3'] ? $entry['ccn3'] : null,
+                'calling_code' => !empty($entry['callingCode']) ? implode(', ', $entry['callingCode']) : null,
+                'latitude' => !empty($entry['latlng']) ? $entry['latlng'][0] : null,
+                'longitude' => !empty($entry['latlng']) ? $entry['latlng'][1] : null
+            ];
 
-		$this->set('countries', $countries);
-		$this->set('_serialize', ['countries']);
-	}
+            $country = $this->Countries->patchEntity($country, $data);
+            $this->Countries->save($country);
+        }
+
+        $this->set('countries', $countries);
+        $this->set('_serialize', ['countries']);
+    }
 }
 
 //echo "<pre>\n\nData" . print_r($country->toArray(), true) . "\n</pre>\n\n";

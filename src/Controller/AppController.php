@@ -22,26 +22,26 @@ use Cake\Network\Session;
  */
 class AppController extends BaseController
 {
-	/**
-	 * Helpers
-	 *
-	 * @var array
-	 * @access public
-	 */
-	public $helpers = [
-		'Html' => ['templates' => 'templates']
-	];
+    /**
+     * Helpers
+     *
+     * @var array
+     * @access public
+     */
+    public $helpers = [
+        'Html' => ['templates' => 'templates']
+    ];
 
-	/**
-	 * initialize()
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function initialize()
-	{
-		parent::initialize();
-		$this->loadComponent('Flash');
-		$this->loadComponent('Paginator');
-	}
+    /**
+     * initialize()
+     *
+     * @access public
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Flash');
+        $this->loadComponent('Paginator');
+    }
 }

@@ -12,8 +12,8 @@
 <h2><?= __('Details'); ?></h2>
 
 <?= $this->Form->input('name', [
-	'templateVars' => ['format' => ' twelve wide field'],
-	'required' => true
+    'templateVars' => ['format' => ' twelve wide field'],
+    'required' => true
 ]); ?>
 
 </div>

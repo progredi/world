@@ -12,19 +12,19 @@
 <h2><?= __('Details'); ?></h2>
 
 <?= $this->Form->input('name', [
-	'templateVars' => ['format' => ' twelve wide field'],
-	'required' => true
+    'templateVars' => ['format' => ' twelve wide field'],
+    'required' => true
 ]); ?>
 
 <?= $this->Form->input('region_id', [
-	'templateVars' => [
-		'format' => ' ten wide field'
-	],
-	'label' => __('Region'),
-	'class' => 'ui dropdown',
-	'options' => $continentsOptions,
-	'required' => true,
-	'empty' => true
+    'templateVars' => [
+        'format' => ' ten wide field'
+    ],
+    'label' => __('Region'),
+    'class' => 'ui dropdown',
+    'options' => $continentsOptions,
+    'required' => true,
+    'empty' => true
 ]); ?>
 
 </div>

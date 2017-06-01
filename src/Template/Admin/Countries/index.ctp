@@ -16,11 +16,11 @@
 
 ?>
 <?= $this->element('navigation/breadcrumbs', [
-	'menuItems' => [
-		[__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
-		[__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
-		[__('Countries'), __('Countries Dashboard'), ['action' => 'index']]
-	]
+    'menuItems' => [
+        [__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
+        [__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
+        [__('Countries'), __('Countries Dashboard'), ['action' => 'index']]
+    ]
 ]); ?>
 
 <h1 class="ui large header"><?= __('Countries'); ?></h1>
@@ -34,16 +34,16 @@
 <div class="sixteen wide column">
 
 <?= $this->Html->link('<i class="plus icon"></i>' . ' ' . __('Country'),
-	['action' => 'add'],
-	['class' => 'ui add button', 'title' => __('Add new country'), 'escape' => false]
+    ['action' => 'add'],
+    ['class' => 'ui add button', 'title' => __('Add new country'), 'escape' => false]
 ); ?>
 
 </div>
 <div class="sixteen wide column">
 
 <?= $this->element('search-filter', [
-	'columns' => ['id', 'name'],
-	'default' => 'name'
+    'columns' => ['id', 'name'],
+    'default' => 'name'
 ]); ?>
 
 </div>
@@ -88,33 +88,33 @@
 <td class="center aligned status"><?=
 
 $country->enabled ?
-	$this->Html->link('<i class="large enabled icon"></i>',
-		['action' => 'disable', $country->id],
-		['title' => __('Country') . ' ' . __('is enabled: click to disable'), 'escape' => false]) :
-	$this->Html->link('<i class="large disabled icon"></i>',
-		['action' => 'enable', $country->id],
-		['title' => __('Country') . ' ' . __('is disabled: click to enable'), 'escape' => false]);
+    $this->Html->link('<i class="large enabled icon"></i>',
+        ['action' => 'disable', $country->id],
+        ['title' => __('Country') . ' ' . __('is enabled: click to disable'), 'escape' => false]) :
+    $this->Html->link('<i class="large disabled icon"></i>',
+        ['action' => 'enable', $country->id],
+        ['title' => __('Country') . ' ' . __('is disabled: click to enable'), 'escape' => false]);
 
 ?></td>
 <td class="three action icons"><?=
 
 $this->Html->link('<i class="large view record icon"></i>',
-	['action' => 'view', $country->id],
-	['title' => __('View country'), 'escape' => false]
+    ['action' => 'view', $country->id],
+    ['title' => __('View country'), 'escape' => false]
 );
 
 ?> <?=
 
 $this->Html->link('<i class="large edit record icon"></i>',
-	['action' => 'edit', $country->id],
-	['title' => __('Edit country'), 'escape' => false]
+    ['action' => 'edit', $country->id],
+    ['title' => __('Edit country'), 'escape' => false]
 );
 
 ?> <?=
 
 $this->Form->postLink('<i class="large delete record icon"></i>',
-	['action' => 'delete', $country->id],
-	['title' => __('Delete country'), 'confirm' => __('Are you sure?'), 'escape' => false]
+    ['action' => 'delete', $country->id],
+    ['title' => __('Delete country'), 'confirm' => __('Are you sure?'), 'escape' => false]
 );
 
 ?></td>
@@ -147,16 +147,16 @@ $this->Form->postLink('<i class="large delete record icon"></i>',
 <div class="sixteen wide column">
 
 <?= $this->Html->link('<i class="plus icon"></i>' . ' ' . __('Country'),
-	['action' => 'add'],
-	['class' => 'ui add button', 'title' => __('Add new country'), 'escape' => false]
+    ['action' => 'add'],
+    ['class' => 'ui add button', 'title' => __('Add new country'), 'escape' => false]
 ); ?>
 
 </div>
 <div class="sixteen wide column">
 
 <?= $this->element('search-filter', [
-	'columns' => ['id', 'name'],
-	'default' => 'name'
+    'columns' => ['id', 'name'],
+    'default' => 'name'
 ]); ?>
 
 </div>

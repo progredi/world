@@ -5,11 +5,11 @@ namespace Progredi\World\Model\Table;
 use Cake\Cache\Cache;
 //use Cake\ORM\Query;
 //use Cake\ORM\RulesChecker;
-//use Cake\Validation\Validator;
+use Cake\Validation\Validator;
 use Progredi\World\Model\Table\AppTable;
 
 /**
- * Regions Table
+ * Languages Table
  *
  * PHP5/7
  *
@@ -21,7 +21,7 @@ use Progredi\World\Model\Table\AppTable;
  * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
  * @link      https://github.com/progredi/world
  */
-class RegionsTable extends AppTable
+class LanguagesTable extends AppTable
 {
     /**
      * Initialize method
@@ -31,35 +31,34 @@ class RegionsTable extends AppTable
      */
     public function initialize(array $config)
     {
-        parent::initialize($config);
+        $this->setTable('world_languages');
 
-        $this->setTable('world_regions');
-
-        // Associations
+        // Table Associations
 
         $this->hasMany('Countries', [
             'className'   => 'World.Countries',
-            'foreignKey'  => 'region_id',
-            'sort' => ['Countries.name' => 'asc'],
+            'foreignKey'  => 'continent_id',
             'dependent'   => false
         ]);
-        $this->belongsTo('Continents', [
-            'className' => 'World.Continents',
-            'foreignKey' => 'continent_id'
+        $this->hasMany('Regions', [
+            'className'   => 'World.Regions',
+            'foreignKey'  => 'continent_id',
+            'dependent'   => false
         ]);
     }
 
     /**
      * ValidationDefault method
      *
-     * @param object $validator
      * @access public
+     * @param object $validator
+     * @return object Validator
      */
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('name', 'notBlank', [
-                'rule' => 'notBlank',
+            ->add('name', 'notEmpty', [
+                'rule' => 'notEmpty',
                 'message' => __('Field cannot be left blank'),
             ]);
 
@@ -70,14 +69,14 @@ class RegionsTable extends AppTable
      * Options method
      *
      * @access public
-     * @return array Options list for regions select input
+     * @return array Options list for languages select input
      */
     public function options()
     {
-        $regions = $this;
-        return Cache::remember('world_regions_options', function () use ($regions) {
+        $languages = $this;
+        return Cache::remember('world_languages_options', function () use ($languages) {
 
-            $query = $regions->find('list')
+            $query = $languages->find('list')
                 ->select(['id', 'name'])
                 ->where(['enabled' => true])
                 ->order(['name' => 'asc']);
@@ -86,3 +85,6 @@ class RegionsTable extends AppTable
         });
     }
 }
+
+//echo "<pre>\n\nSessionData: " . print_r(CakeSession::read(), true) . "\n</pre>\n\n";
+//exit();

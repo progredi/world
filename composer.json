@@ -1,5 +1,6 @@
 {
     "name": "progredi/world",
+    "version": "0.0.1-dev",
     "description": "World plugin for CakePHP",
     "type": "cakephp-plugin",
     "keywords": ["cakephp", "world", "countries", "regions", "continents", "currencies"],

@@ -19,16 +19,16 @@ use Cake\ORM\Table;
  */
 class AppTable extends Table
 {
-	/**
-	 * Initialize method
-	 *
-	 * @param array $config Configuration for the Table.
-	 * @return void
-	 */
-	public function initialize(array $config)
-	{
-		// Behaviors
+    /**
+     * Initialize method
+     *
+     * @param array $config Configuration for the Table.
+     * @return void
+     */
+    public function initialize(array $config)
+    {
+        // Behaviors
 
-		$this->addBehavior('Timestamp');
-	}
+        $this->addBehavior('Timestamp');
+    }
 }

@@ -27,5 +27,4 @@ class CountryCurrency extends Entity
     protected $_accessible = [
         '*' => true,
     ];
-
 }

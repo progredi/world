@@ -22,16 +22,16 @@ use Progredi\World\Model\Table\AppTable;
  */
 class CountriesCurrenciesTable extends AppTable
 {
-	/**
-	 * Initialize method
-	 *
-	 * @param array $config Configuration for the Table.
-	 * @return void
-	 */
-	public function initialize(array $config)
-	{
-		parent::initialize($config);
+    /**
+     * Initialize method
+     *
+     * @param array $config Configuration for the Table.
+     * @return void
+     */
+    public function initialize(array $config)
+    {
+        parent::initialize($config);
 
-		$this->setTable('world_countries_currencies');
-	}
+        $this->setTable('world_countries_currencies');
+    }
 }

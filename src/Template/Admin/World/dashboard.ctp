@@ -16,11 +16,11 @@
 
 ?>
 <?= $this->element('navigation/breadcrumbs', [
-	'menuItems' => [
-		[__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
-		[__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
-		[null, null, []]
-	]
+    'menuItems' => [
+        [__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
+        [__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
+        [null, null, []]
+    ]
 ]); ?>
 
 <div class="world dashboard">

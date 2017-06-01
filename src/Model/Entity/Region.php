@@ -27,5 +27,4 @@ class Region extends Entity
     protected $_accessible = [
         '*' => true,
     ];
-
 }

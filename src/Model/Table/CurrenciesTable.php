@@ -23,65 +23,65 @@ use Cake\Cache\Cache;
  */
 class CurrenciesTable extends AppTable
 {
-	public $order = ['Currencies.name' => 'asc'];
+    public $order = ['Currencies.name' => 'asc'];
 
-	/**
-	 * Initialize method
-	 *
-	 * @param array $config Configuration for the Table.
-	 * @return void
-	 */
-	public function initialize(array $config)
-	{
-		parent::initialize($config);
+    /**
+     * Initialize method
+     *
+     * @param array $config Configuration for the Table.
+     * @return void
+     */
+    public function initialize(array $config)
+    {
+        parent::initialize($config);
 
-		$this->setTable('world_currencies');
+        $this->setTable('world_currencies');
 
-		// Associations
+        // Associations
 
-		$this->belongsToMany('Countries', [
-			'className' => 'World.Countries',
-			'joinTable' => 'world_countries_currencies',
-			'with' => 'World.Currencies',
-			'foreignKey' => 'currency_id',
-			'targetForeignKey' => 'country_id',
-			'sort' => ['Countries.name' => 'asc'],
-			'unique' => 'keepExisting'
-		]);
-	}
+        $this->belongsToMany('Countries', [
+            'className' => 'World.Countries',
+            'joinTable' => 'world_countries_currencies',
+            'with' => 'World.Currencies',
+            'foreignKey' => 'currency_id',
+            'targetForeignKey' => 'country_id',
+            'sort' => ['Countries.name' => 'asc'],
+            'unique' => 'keepExisting'
+        ]);
+    }
 
-	/**
-	 * ValidationDefault method
-	 *
-	 * @param object $validator
-	 * @access public
-	public function validationDefault(Validator $validator)
-	{
-		$validator
-			->notEmpty('title')
-			->notEmpty('body');
+    /**
+     * ValidationDefault method
+     *
+     * @param object $validator
+     * @access public
+    public function validationDefault(Validator $validator)
+    {
+        $validator
+            ->notEmpty('title')
+            ->notEmpty('body');
 
-		return $validator;
-	}
-	 */
+        return $validator;
+    }
+     */
 
-	/**
-	 * Options method
-	 *
-	 * @access public
+    /**
+     * Options method
+     *
+     * @access public
      * @return array Options list for currencies select input
-	 */
-	public function options()
-	{
-		$currencies = $this;
-		return Cache::remember('world_currencies_options', function () use ($currencies) {
+     */
+    public function options()
+    {
+        $currencies = $this;
+        return Cache::remember('world_currencies_options', function () use ($currencies) {
 
-			$query = $currencies->find('list')
-				->select(['id', 'name'])
-				->where(['enabled' => true])
-				->order(['name' => 'asc']);
+            $query = $currencies->find('list')
+                ->select(['id', 'name'])
+                ->where(['enabled' => true])
+                ->order(['name' => 'asc']);
 
-			return $query->toArray();
-		});
+            return $query->toArray();
+        });
     }
 }

@@ -18,11 +18,11 @@ use Cake\Core\Configure;
 
 ?>
 <?= $this->element('navigation/breadcrumbs', [
-	'menuItems' => [
-		[__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
-		[__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
-		[__('Currencies'), __('Currencies Dashboard'), ['action' => 'index']]
-	]
+    'menuItems' => [
+        [__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
+        [__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
+        [__('Currencies'), __('Currencies Dashboard'), ['action' => 'index']]
+    ]
 ]); ?>
 
 <h1 class="ui large header"><?= __('Currencies'); ?></h1>
@@ -36,16 +36,16 @@ use Cake\Core\Configure;
 <div class="sixteen wide column">
 
 <?= $this->Html->link('<i class="plus icon"></i> Currency',
-	['action' => 'add'],
-	['class' => 'ui add button', 'title' => __('Add a new currency'), 'escape' => false]
+    ['action' => 'add'],
+    ['class' => 'ui add button', 'title' => __('Add a new currency'), 'escape' => false]
 ); ?>
 
 </div>
 <div class="sixteen wide column">
 
 <?= $this->element('search-filter', [
-	'columns' => ['id', 'name'],
-	'default' => 'postcode'
+    'columns' => ['id', 'name'],
+    'default' => 'postcode'
 ]); ?>
 
 </div>
@@ -92,31 +92,31 @@ use Cake\Core\Configure;
 <td class="center aligned status"><?=
 
 $currency->enabled ?
-	$this->Html->link('<i class="large enabled icon"></i>',
-		['action' => 'disable', $currency->id],
-		['title' => __('Currency enabled: click to disable'), 'escape' => false]) :
-	$this->Html->link('<i class="large disabled icon"></i>',
-		['action' => 'enable', $currency->id],
-		['title' => __('Currency disabled: click to enable'), 'escape' => false]);
+    $this->Html->link('<i class="large enabled icon"></i>',
+        ['action' => 'disable', $currency->id],
+        ['title' => __('Currency enabled: click to disable'), 'escape' => false]) :
+    $this->Html->link('<i class="large disabled icon"></i>',
+        ['action' => 'enable', $currency->id],
+        ['title' => __('Currency disabled: click to enable'), 'escape' => false]);
 
 ?></td>
 <td class="three action icons"><?=
 
 $this->Html->link('<i class="large view record icon"></i>',
-	['action' => 'view', $currency->id],
-	['title' => 'View currency', 'escape' => false]);
+    ['action' => 'view', $currency->id],
+    ['title' => 'View currency', 'escape' => false]);
 
 ?> <?=
 
 $this->Html->link('<i class="large edit record icon"></i>',
-	['action' => 'edit', $currency->id],
-	['title' => 'Edit currency', 'escape' => false]);
+    ['action' => 'edit', $currency->id],
+    ['title' => 'Edit currency', 'escape' => false]);
 
 ?> <?=
 
 $this->Form->postLink('<i class="large delete record icon"></i>',
-	['action' => 'delete', $currency->id],
-	['title' => __('Delete currency'), 'confirm' => __('Are you sure?'), 'escape' => false]);
+    ['action' => 'delete', $currency->id],
+    ['title' => __('Delete currency'), 'confirm' => __('Are you sure?'), 'escape' => false]);
 
 ?></td>
 </tr>
@@ -148,16 +148,16 @@ $this->Form->postLink('<i class="large delete record icon"></i>',
 <div class="sixteen wide column">
 
 <?= $this->Html->link('<i class="plus icon"></i> Currency',
-	['action' => 'add'],
-	['class' => 'ui add button', 'title' => __('Add a new currency'), 'escape' => false]
+    ['action' => 'add'],
+    ['class' => 'ui add button', 'title' => __('Add a new currency'), 'escape' => false]
 ); ?>
 
 </div>
 <div class="sixteen wide column">
 
 <?= $this->element('search-filter', [
-	'columns' => ['id', 'name'],
-	'default' => 'postcode'
+    'columns' => ['id', 'name'],
+    'default' => 'postcode'
 ]); ?>
 
 </div>

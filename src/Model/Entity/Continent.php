@@ -27,5 +27,4 @@ class Continent extends Entity
     protected $_accessible = [
         '*' => true,
     ];
-
 }

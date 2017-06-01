@@ -16,12 +16,12 @@
 
 ?>
 <?= $this->element('navigation/breadcrumbs', [
-	'menuItems' => [
-		[__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
-		[__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
-		[__('Continents'), __('Continents Dashboard'), ['action' => 'index']],
-		[null, null, []]
-	]
+    'menuItems' => [
+        [__('Dashboard'), __('Admin Dashboard'), ['plugin' => null, 'controller' => 'Admin', 'action' => 'dashboard']],
+        [__('World'), __('World Dashboard'), ['controller' => 'World', 'action' => 'dashboard']],
+        [__('Continents'), __('Continents Dashboard'), ['action' => 'index']],
+        [null, null, []]
+    ]
 ]); ?>
 
 <h1><?= __('View Continent'); ?>: <strong><?= h($continent->name); ?></strong></h1>
@@ -44,7 +44,7 @@
 <h2><?= __('Details'); ?></h2>
 
 <p class="view"><span class="label"><?= __('Name'); ?>: </span><span class="value"><?=
-	h($continent->name);
+    h($continent->name);
 ?></span></p>
 
 </div>
@@ -89,33 +89,33 @@
 <td class="center aligned status"><?=
 
 $region->enabled ?
-	$this->Html->link('<i class="large enabled icon"></i>',
-		['controller' => 'Regions', 'action' => 'disable', $region->id],
-		['title' => __('Region is enabled: click to disable'), 'escape' => false]) :
-	$this->Html->link('<i class="large disabled icon"></i>',
-		['controller' => 'Regions', 'action' => 'enable', $region->id],
-		['title' => __('Region is disabled: click to enable'), 'escape' => false]);
+    $this->Html->link('<i class="large enabled icon"></i>',
+        ['controller' => 'Regions', 'action' => 'disable', $region->id],
+        ['title' => __('Region is enabled: click to disable'), 'escape' => false]) :
+    $this->Html->link('<i class="large disabled icon"></i>',
+        ['controller' => 'Regions', 'action' => 'enable', $region->id],
+        ['title' => __('Region is disabled: click to enable'), 'escape' => false]);
 
 ?></td>
 <td class="three action icons"><?=
 
 $this->Html->link('<i class="large view record icon"></i>',
-	['controller' => 'Regions', 'action' => 'view', $region->id],
-	['title' => __('View region'), 'escape' => false]
+    ['controller' => 'Regions', 'action' => 'view', $region->id],
+    ['title' => __('View region'), 'escape' => false]
 );
 
 ?> <?=
 
 $this->Html->link('<i class="large edit record icon"></i>',
-	['controller' => 'Regions', 'action' => 'edit', $region->id],
-	['title' => __('Edit region'), 'escape' => false]
+    ['controller' => 'Regions', 'action' => 'edit', $region->id],
+    ['title' => __('Edit region'), 'escape' => false]
 );
 
 ?> <?=
 
 $this->Form->postLink('<i class="large delete record icon"></i>',
-	['controller' => 'Regions', 'action' => 'delete', $region->id],
-	['title' => __('Delete region'), 'confirm' => __('Are you sure?'), 'escape' => false]
+    ['controller' => 'Regions', 'action' => 'delete', $region->id],
+    ['title' => __('Delete region'), 'confirm' => __('Are you sure?'), 'escape' => false]
 );
 
 ?></td>
@@ -128,8 +128,8 @@ $this->Form->postLink('<i class="large delete record icon"></i>',
 </table>
 
 <?= $this->Html->link('Add',
-	['controller' => 'Regions', 'action' => 'add', $continent->id],
-	['class' => 'ui add button', 'title' => __('Add region'),  'style' => 'margin-top:1.7em;']
+    ['controller' => 'Regions', 'action' => 'add', $continent->id],
+    ['class' => 'ui add button', 'title' => __('Add region'),  'style' => 'margin-top:1.7em;']
 ); ?>
 
 </div>
@@ -166,33 +166,33 @@ $this->Form->postLink('<i class="large delete record icon"></i>',
 <td class="center aligned status"><?=
 
 $country->enabled ?
-	$this->Html->link('<i class="large enabled icon"></i>',
-		['controller' => 'Countries', 'action' => 'disable', $country->id],
-		['title' => __('Country is enabled: click to disable'), 'escape' => false]) :
-	$this->Html->link('<i class="large disabled icon"></i>',
-		['controller' => 'Countries', 'action' => 'enable', $country->id],
-		['title' => __('Country is disabled: click to enable'), 'escape' => false]);
+    $this->Html->link('<i class="large enabled icon"></i>',
+        ['controller' => 'Countries', 'action' => 'disable', $country->id],
+        ['title' => __('Country is enabled: click to disable'), 'escape' => false]) :
+    $this->Html->link('<i class="large disabled icon"></i>',
+        ['controller' => 'Countries', 'action' => 'enable', $country->id],
+        ['title' => __('Country is disabled: click to enable'), 'escape' => false]);
 
 ?></td>
 <td class="three action icons"><?=
 
 $this->Html->link('<i class="large view record icon"></i>',
-	['controller' => 'Countries', 'action' => 'view', $country->id],
-	['title' => __('View country'), 'escape' => false]
+    ['controller' => 'Countries', 'action' => 'view', $country->id],
+    ['title' => __('View country'), 'escape' => false]
 );
 
 ?> <?=
 
 $this->Html->link('<i class="large edit record icon"></i>',
-	['controller' => 'Countries', 'action' => 'edit', $country->id],
-	['title' => __('Edit country'), 'escape' => false]
+    ['controller' => 'Countries', 'action' => 'edit', $country->id],
+    ['title' => __('Edit country'), 'escape' => false]
 );
 
 ?> <?=
 
 $this->Form->postLink('<i class="large delete record icon"></i>',
-	['controller' => 'Countries', 'action' => 'delete', $country->id],
-	['title' => __('Delete country'), 'confirm' => __('Are you sure?'), 'escape' => false]
+    ['controller' => 'Countries', 'action' => 'delete', $country->id],
+    ['title' => __('Delete country'), 'confirm' => __('Are you sure?'), 'escape' => false]
 );
 
 ?></td>

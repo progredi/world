@@ -19,13 +19,13 @@ use Progredi\World\Controller\Admin\AppController;
  */
 class WorldController extends AppController
 {
-	/**
-	 * Dashboard method
-	 *
-	 * @return void
-	 */
-	public function dashboard()
-	{
-		$this->set('title_for_layout', __('Dashboard') . TS . __('World') . TS . __('Admin'));
-	}
+    /**
+     * Dashboard method
+     *
+     * @return void
+     */
+    public function dashboard()
+    {
+        $this->set('title_for_layout', __('Dashboard') . TS . __('World') . TS . __('Admin'));
+    }
 }

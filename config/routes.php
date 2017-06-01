@@ -20,28 +20,28 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::prefix('admin', function (RouteBuilder $routes) {
 
-	$routes->redirect('/world',
-		['plugin' => 'World', 'controller' => 'World', 'action' => 'dashboard'],
-		['status' => 301]
-	);
+    $routes->redirect('/world',
+        ['plugin' => 'World', 'controller' => 'World', 'action' => 'dashboard'],
+        ['status' => 301]
+    );
 
-	$routes->plugin('World', function (RouteBuilder $routes) {
+    $routes->plugin('World', function (RouteBuilder $routes) {
 
-		$routes->extensions(['json', 'xml']);
+        $routes->extensions(['json', 'xml']);
 
-		$routes->connect('/dashboard',
-			['controller' => 'World', 'action' => 'dashboard']
-		);
+        $routes->connect('/dashboard',
+            ['controller' => 'World', 'action' => 'dashboard']
+        );
 
-		$routes->connect('/:controller',
-			['action' => 'index']
-		);
-		$routes->connect('/:controller/:action',
-			[]
-		);
-		$routes->connect('/:controller/:action/:id',
-			[],
-			['pass' => ['id'], 'id' => '[0-9]+']
-		);
-	});
+        $routes->connect('/:controller',
+            ['action' => 'index']
+        );
+        $routes->connect('/:controller/:action',
+            []
+        );
+        $routes->connect('/:controller/:action/:id',
+            [],
+            ['pass' => ['id'], 'id' => '[0-9]+']
+        );
+    });
 });

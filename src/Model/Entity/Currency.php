@@ -27,5 +27,4 @@ class Currency extends Entity
     protected $_accessible = [
         '*' => true,
     ];
-
 }
