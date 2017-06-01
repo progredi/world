@@ -1,8 +1,3 @@
-<?php
-
-use Cake\Utility\Inflector;
-
-?>
 <div class="buttons">
 
 <?= $this->Html->link(__('Cancel'),

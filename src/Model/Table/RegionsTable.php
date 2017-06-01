@@ -1,25 +1,25 @@
 <?php
 
-namespace World\Model\Table;
+namespace Progredi\World\Model\Table;
 
 use Cake\Cache\Cache;
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
-use Cake\Validation\Validator;
-use World\Model\Table\AppTable;
+//use Cake\ORM\Query;
+//use Cake\ORM\RulesChecker;
+//use Cake\Validation\Validator;
+use Progredi\World\Model\Table\AppTable;
 
 /**
- * Model\Table\RegionsTable
+ * Regions Table
  *
- * PHP5
+ * PHP5/7
  *
- * @category  Model\Table
- * @package   CakePHP World Plugin
+ * @category  Controller
+ * @package   Progredi\World
  * @version   0.1.0
  * @author    David Scott <support@progredi.co.uk>
- * @copyright Copyright (c) 2014-2016 Progredi
- * @license   http://www.opensource.org/licenses/mit-license.php MIT License
- * @link      http://www.progredi.co.uk/cakephp/plugins/cakephp-world-plugin
+ * @copyright Copyright (c) 2014-2017 Progredi
+ * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @link      https://github.com/progredi/world
  */
 class RegionsTable extends AppTable
 {
@@ -33,7 +33,7 @@ class RegionsTable extends AppTable
 	{
 		parent::initialize($config);
 
-		$this->table('world_regions');
+		$this->setTable('world_regions');
 
 		// Associations
 
@@ -70,7 +70,7 @@ class RegionsTable extends AppTable
 	 * Options method
 	 *
 	 * @access public
-	 * @return array Select options list of world regions
+     * @return array Options list for regions select input
 	 */
 	public function options()
 	{

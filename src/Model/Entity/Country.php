@@ -7,15 +7,15 @@ use Cake\ORM\Entity;
 /**
  * Country Entity
  *
- * PHP5
+ * PHP5/7
  *
- * @category  Model\Entity
- * @package   CakePHP World Plugin
+ * @category  Controller
+ * @package   Progredi\World
  * @version   0.1.0
  * @author    David Scott <support@progredi.co.uk>
- * @copyright Copyright (c) 2014-2016 Progredi
- * @license   http://www.opensource.org/licenses/mit-license.php MIT License
- * @link      http://www.progredi.co.uk/cakephp/plugins/cakephp-world-plugin
+ * @copyright Copyright (c) 2014-2017 Progredi
+ * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @link      https://github.com/progredi/world
  */
 class Country extends Entity
 {

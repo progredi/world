@@ -1,6 +1,6 @@
 <?php
 
-namespace World\Controller\Admin;
+namespace Progredi\World\Controller\Admin;
 
 use App\Controller\Admin\AppController as BaseController;
 use Cake\Event\Event;
@@ -10,15 +10,15 @@ use Cake\Utility\Inflector;
 /**
  * World Admin AppController
  *
- * PHP5
+ * PHP5/7
  *
  * @category  Controller
- * @package   CakePHP World Plugin
+ * @package   Progredi\World
  * @version   0.1.0
  * @author    David Scott <support@progredi.co.uk>
  * @copyright Copyright (c) 2014-2017 Progredi
- * @license   http://www.opensource.org/licenses/mit-license.php MIT License
- * @link      http://www.progredi.co.uk/cakephp/plugins/cakephp-world-plugin
+ * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @link      https://github.com/progredi/world
  */
 class AppController extends BaseController
 {

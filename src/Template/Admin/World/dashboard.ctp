@@ -1,17 +1,17 @@
 <?php
 
 /**
- * World Dashboard Template
+ * World Admin Dashboard Template
  *
- * PHP5
+ * PHP5/7
  *
- * @category  Template
- * @package   CakePHP World Plugin
+ * @category  Controller
+ * @package   Progredi\World
  * @version   0.1.0
  * @author    David Scott <support@progredi.co.uk>
  * @copyright Copyright (c) 2014-2017 Progredi
- * @license   http://www.opensource.org/licenses/mit-license.php MIT License
- * @link      http://www.progredi.co.uk/cakephp/plugins/cakephp-world-plugin
+ * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @link      https://github.com/progredi/world
  */
 
 ?>
