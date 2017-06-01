@@ -1,6 +1,8 @@
 <?php
 
+use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
+use Cake\Routing\Route\DashedRoute;
 
 /**
  * Routes
@@ -14,16 +16,16 @@ use Cake\Routing\Router;
  * @link      https://github.com/progredi/world
  */
 
-Router::defaultRouteClass('DashedRoute');
+Router::defaultRouteClass(DashedRoute::class);
 
-Router::prefix('admin', function ($routes) {
+Router::prefix('admin', function (RouteBuilder $routes) {
 
 	$routes->redirect('/world',
 		['plugin' => 'World', 'controller' => 'World', 'action' => 'dashboard'],
 		['status' => 301]
 	);
 
-	$routes->plugin('World', function ($routes) {
+	$routes->plugin('World', function (RouteBuilder $routes) {
 
 		$routes->extensions(['json', 'xml']);
 
