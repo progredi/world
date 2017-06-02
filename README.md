@@ -36,10 +36,10 @@ Other future sources:
 
 Please review the terms under which you can use their data.
 
-## License
-
-The license information for your plugin, as well as any specific copyright information.
+## Copyright
 
 &copy; 2014-2017 Progredi eBusiness. All rights reserved.
+
+## License
 
 Licensed under the [MIT](https://github.com/progredi/world/blob/master/LICENSE.txt) License. Redistributions of the source code included in this repository must retain the copyright notice found in each file.
