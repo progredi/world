@@ -21,11 +21,11 @@ Router::defaultRouteClass(DashedRoute::class);
 Router::prefix('admin', function (RouteBuilder $routes) {
 
     $routes->redirect('/world',
-        ['plugin' => 'World', 'controller' => 'World', 'action' => 'dashboard'],
+        ['plugin' => 'Progredi/World', 'controller' => 'World', 'action' => 'dashboard'],
         ['status' => 301]
     );
 
-    $routes->plugin('World', function (RouteBuilder $routes) {
+    $routes->plugin('Progredi/World', ['path' => '/world'], function (RouteBuilder $routes) {
 
         $routes->extensions(['json', 'xml']);
 
