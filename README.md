@@ -1,6 +1,6 @@
-# CakePHP World Plugin
+# CakePHP 3 World Plugin
 
-CakePHP 3.0 plugin for providing geographical, cultural and economic world data.
+World plugin for CakePHP 3, providing geographical, cultural and economic world data.
 
 **THIS IS A WORK IN PROGRESS**
 
