@@ -32,7 +32,7 @@ Data providers:
 
 Other future sources:
 
-* Postal Zone: [Royal Mail](http://www.royalmail.com/international-zones)
+* International Postal Zone: [Royal Mail](http://www.royalmail.com/international-zones)
 
 Please review the terms under which you can use their data.
 
@@ -42,4 +42,4 @@ The license information for your plugin, as well as any specific copyright infor
 
 &copy; 2014-2017 Progredi eBusiness. All rights reserved.
 
-Licensed under the [MIT](http://www.opensource.org/licenses/mit-license.php) License. Redistributions of the source code included in this repository must retain the copyright notice found in each file.
+Licensed under the [MIT](https://github.com/progredi/world/blob/master/LICENSE.txt) License. Redistributions of the source code included in this repository must retain the copyright notice found in each file.
