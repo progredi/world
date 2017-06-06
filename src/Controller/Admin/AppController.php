@@ -6,6 +6,7 @@ use App\Controller\Admin\AppController as BaseController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
+use Cake\Http\ServerRequest;
 
 /**
  * World Admin AppController
@@ -57,6 +58,7 @@ class AppController extends BaseController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+
         if ($this->request->is('ajax')) {
             $this->response->disableCache();
         }
@@ -77,12 +79,15 @@ class AppController extends BaseController
         $conditions = [];
         $model = $this->name;
 
-        if ($this->request->is(['get']) && isset($this->request->getQuery['column'])) {
-            $column = $this->request->getQuery['column'];
-            $value = $this->request->getQuery['value'];
+        if ($this->request->is('get')
+            && !is_null($this->request->getQuery('column'))
+            && !is_null($this->request->getQuery('value'))
+        ) {
+            $column = $this->request->getQuery('column');
+            $value = $this->request->getQuery('value');
             $conditions = $column == 'id'
                 ? ["$model.id" => [$value]]
-                :  ["$model.$column LIKE" => "%$value%"];
+                : ["$model.$column LIKE" => "%$value%"];
         }
 
         return $conditions;
@@ -101,7 +106,7 @@ class AppController extends BaseController
             return $this->redirect($this->referer());
         }
 
-        $table = TableRegistry::get($this->request->getParam['plugin'] . '.' . $this->name);
+        $table = TableRegistry::get($this->request->getParam('plugin') . '.' . $this->name);
         $entity = $table->get($id);
 
         $entity->enabled = true;
@@ -127,7 +132,7 @@ class AppController extends BaseController
             return $this->redirect($this->referer());
         }
 
-        $table = TableRegistry::get($this->request->getParam['plugin'] . '.' . $this->name);
+        $table = TableRegistry::get($this->request->getParam('plugin') . '.' . $this->name);
         $entity = $table->get($id);
 
         $entity->enabled = false;

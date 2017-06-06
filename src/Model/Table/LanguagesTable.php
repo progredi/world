@@ -36,12 +36,12 @@ class LanguagesTable extends AppTable
         // Table Associations
 
         $this->hasMany('Countries', [
-            'className'   => 'World.Countries',
+            'className'   => 'Progredi/World.Countries',
             'foreignKey'  => 'continent_id',
             'dependent'   => false
         ]);
         $this->hasMany('Regions', [
-            'className'   => 'World.Regions',
+            'className'   => 'Progredi/World.Regions',
             'foreignKey'  => 'continent_id',
             'dependent'   => false
         ]);

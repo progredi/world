@@ -39,11 +39,11 @@ class CountriesTable extends AppTable
         // Associations
 
         $this->belongsTo('Regions', [
-            'className' => 'World.Regions',
+            'className' => 'Progredi/World.Regions',
             'foreignKey' => 'region_id'
         ]);
         $this->belongsTo('Continents', [
-            'className' => 'World.Continents',
+            'className' => 'Progredi/World.Continents',
             'foreignKey' => 'continent_id'
         ]);
         //$this->belongsToMany('PostalZones', [

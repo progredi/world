@@ -40,9 +40,9 @@ class CurrenciesTable extends AppTable
         // Associations
 
         $this->belongsToMany('Countries', [
-            'className' => 'World.Countries',
+            'className' => 'Progredi/World.Countries',
             'joinTable' => 'world_countries_currencies',
-            'with' => 'World.Currencies',
+            'with' => 'Progredi/World.Currencies',
             'foreignKey' => 'currency_id',
             'targetForeignKey' => 'country_id',
             'sort' => ['Countries.name' => 'asc'],

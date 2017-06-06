@@ -3,9 +3,9 @@
 namespace Progredi\World\Model\Table;
 
 use Cake\Cache\Cache;
-//use Cake\ORM\Query;
-//use Cake\ORM\RulesChecker;
-//use Cake\Validation\Validator;
+use Cake\ORM\Query;
+use Cake\ORM\RulesChecker;
+use Cake\Validation\Validator;
 use Progredi\World\Model\Table\AppTable;
 
 /**
@@ -38,13 +38,13 @@ class RegionsTable extends AppTable
         // Associations
 
         $this->hasMany('Countries', [
-            'className'   => 'World.Countries',
+            'className'   => 'Progredi/World.Countries',
             'foreignKey'  => 'region_id',
             'sort' => ['Countries.name' => 'asc'],
             'dependent'   => false
         ]);
         $this->belongsTo('Continents', [
-            'className' => 'World.Continents',
+            'className' => 'Progredi/World.Continents',
             'foreignKey' => 'continent_id'
         ]);
     }
