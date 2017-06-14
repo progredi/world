@@ -15,7 +15,7 @@ use Cake\Http\ServerRequest;
  *
  * @category  Controller
  * @package   Progredi\World
- * @version   0.1.0
+ * @since     0.1.0
  * @author    David Scott <support@progredi.co.uk>
  * @copyright Copyright (c) 2014-2017 Progredi
  * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
@@ -60,11 +60,10 @@ class AppController extends BaseController
         parent::beforeFilter($event);
 
         if ($this->request->is('ajax')) {
+            // Disable browser caching
             $this->response->disableCache();
         }
     }
-
-    // SHARED FUNCTIONS
 
     /**
      * Index method [Admin]
@@ -72,25 +71,41 @@ class AppController extends BaseController
      * Provides text search functionality.
      *
      * @access public
-     * @return array
+     * @return array Search query conditions
+     * @return array|void Return to referrering action
      */
     public function index()
     {
-        $conditions = [];
         $model = $this->name;
 
-        if ($this->request->is('get')
-            && !is_null($this->request->getQuery('column'))
-            && !is_null($this->request->getQuery('value'))
-        ) {
-            $column = $this->request->getQuery('column');
-            $value = $this->request->getQuery('value');
-            $conditions = $column == 'id'
-                ? ["$model.id" => [$value]]
-                : ["$model.$column LIKE" => "%$value%"];
+        // Check GET request
+        if (!$this->request->is('get')) {
+            $this->Flash->error(__('Invalid request'));
+            return;
         }
 
-        return $conditions;
+        // Check normal pagination
+        if (!$this->request->getQuery('column', 0) && !$this->request->getQuery('value', 0)) {
+            return;
+        }
+
+        // Check filter column supplied
+        if (!$this->request->getQuery('column', 0)) {
+            $this->Flash->error(__('Filter column not specified'));
+            return;
+        }
+
+        // Check filter value supplied
+        if (!$this->request->getQuery('value', 0)) {
+            $this->Flash->error(__('Filter vallue not specified'));
+            return;
+        }
+
+        $column = $this->request->getQuery('column');
+        $value = $this->request->getQuery('value');
+        return $column == 'id'
+            ? ["$model.id" => [$value]]
+            : ["$model.$column LIKE" => "%$value%"];
     }
 
     /**

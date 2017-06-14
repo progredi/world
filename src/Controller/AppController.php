@@ -14,7 +14,7 @@ use Cake\Network\Session;
  *
  * @category  Controller
  * @package   Progredi\World
- * @version   0.1.0
+ * @since     0.1.0
  * @author    David Scott <support@progredi.co.uk>
  * @copyright Copyright (c) 2014-2017 Progredi
  * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
@@ -25,8 +25,8 @@ class AppController extends BaseController
     /**
      * Helpers
      *
-     * @var array
      * @access public
+     * @var array
      */
     public $helpers = [
         'Html' => ['templates' => 'templates']
